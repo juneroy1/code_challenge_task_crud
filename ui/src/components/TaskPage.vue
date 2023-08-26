@@ -14,7 +14,7 @@
           class="d-flex flex-row justify-content-start align-items-end"
         >
           <b-button class="mx-2" @click="redirectEditForm(task.id)" variant="primary">Edit</b-button>
-          <b-button variant="danger">Delete</b-button>
+          <b-button @click="deleteTask(task.id)" variant="danger">Delete</b-button>
         </b-container>
       </div>
     </div>
