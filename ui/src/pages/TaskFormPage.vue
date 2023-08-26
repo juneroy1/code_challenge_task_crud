@@ -43,6 +43,7 @@
           </b-form-checkbox>
         </b-container>
         <b-container class="p-2 d-flex align-items-center justify-content-end">
+        <router-link class="text-end justify-content-end mx-2 w-100 d-flex" to="/">Cancel</router-link>
           <b-button type="submit" class="text-end" variant="primary"
             >Submit</b-button
           >
