@@ -84,7 +84,20 @@ class TaskController extends Controller
     public function edit($id)
     {
         //
-        
+        $task =  Task::find($id);
+
+        if ($task) {
+            return response()->json([
+                "data" => $task,
+                "success" => true,
+                "message" => 'Successfully get task',
+            ]);
+        }
+        return response()->json([
+            "data" => false,
+            "success" => false,
+            "message" => 'Unknow task',
+        ]);
     }
 
     /**
