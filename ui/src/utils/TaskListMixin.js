@@ -1,25 +1,22 @@
-import axios from "axios";
+// import axios from "axios";
+import { mapState } from 'vuex';
 export default () => {
   return {
     data() {
       return {
-        tasks: [],
       };
     },
     methods: {
       getTasksList() {
-        axios
-          .get("http://localhost:8000/api/task")
-          .then((response) => {
-            console.log("response", response);
-            this.tasks = response.data.data;
-          })
-          .catch((error) => {
-            console.error("Error fetching data:", error);
-          });
+        this.$store.dispatch('getTaskList');
       },
     },
-    computed: {},
+    computed: {
+      ...mapState(['tasks']),
+      getTask(){
+        return this.tasks
+      }
+    },
     created() {
       // call api for tasks list
       this.getTasksList();

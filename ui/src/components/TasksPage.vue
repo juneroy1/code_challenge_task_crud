@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link class="text-start w-100 d-flex" to="/create">New Task</router-link>
-    <b-list-group :key="index" v-for="(task, index) in tasks">
+    <b-list-group :key="index" v-for="(task, index) in getTask">
       <b-list-group-item>
         <task-page :task="task" @refresh="getTasksList" />
       </b-list-group-item>
