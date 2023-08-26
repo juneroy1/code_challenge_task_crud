@@ -15,6 +15,7 @@ const store = new Vuex.Store({
       due_date: null,
       status: false,
     },
+    user: null,
   },
   mutations: {
     setTasks(state, newData) {
@@ -23,20 +24,44 @@ const store = new Vuex.Store({
     setTask(state, newData) {
       state.taskDetails = newData;
     },
+    setUser(state, newData) {
+        state.user = newData;
+      },
   },
   actions: {
+    getUser({ commit }) {
+        const token = localStorage.getItem("userToken")
+      axios
+        .get(`${process.env.VUE_APP_LOCAL_SERVER}api/user`,{
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`
+              },
+        })
+        .then((response) => {
+          console.log("getUser", response);
+        //   const tasks = response.data.data;
+          commit("setUser", response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    },
     async loginNow({ commit }, payload) {
-      const result = await axios
-        .post(`${process.env.VUE_APP_LOCAL_SERVER}api/login`, payload, {
+      const result = await axios.post(
+        `${process.env.VUE_APP_LOCAL_SERVER}api/login`,
+        payload,
+        {
           headers: {
             Accept: "application/json",
           },
-        })
-        if (result.status === 200) {
-            localStorage.setItem("userToken", result.data.data.token)
-            return true
         }
-        return false
+      );
+      if (result.status === 200) {
+        localStorage.setItem("userToken", result.data.data.token);
+        return true;
+      }
+      return false;
     },
     getTaskList({ commit }) {
       axios

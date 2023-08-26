@@ -12,7 +12,7 @@ export default () => {
       },
     },
     computed: {
-      ...mapState(['tasks']),
+      ...mapState(['tasks','user']),
       getTask(){
         return this.tasks
       }

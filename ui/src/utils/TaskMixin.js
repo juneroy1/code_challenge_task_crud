@@ -1,3 +1,4 @@
+import { mapState } from 'vuex';
 
 export default () => {
   return {
@@ -16,5 +17,8 @@ export default () => {
         this.$store.dispatch('deleteTask',{id});
       },
     },
+    computed:{
+      ...mapState(['user']),
+    }
   };
 };
