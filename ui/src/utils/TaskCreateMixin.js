@@ -18,16 +18,9 @@ export default () => {
         await this.$store.dispatch('updateTask',{...this.task, id:this.$route.params.id});
         this.$router.push("/");
       },
-      onCreate() {
-        axios
-          .post("http://localhost:8000/api/task", this.task)
-          .then((response) => {
-            console.log("response", response);
-            this.$router.push("/");
-          })
-          .catch((error) => {
-            console.error("Error creating data:", error);
-          });
+      async onCreate() {
+        await this.$store.dispatch('createTask',this.task);
+        this.$router.push("/");
       },
       onSubmit(e) {
         e.preventDefault();

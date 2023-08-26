@@ -45,9 +45,20 @@ const store = new Vuex.Store({
         `${process.env.VUE_APP_LOCAL_SERVER}api/task/${payload.id}`,
         payload
       );
-      console.log('result', result)
+      console.log("result", result);
       if (result.status == 200) {
-        return
+        return;
+      }
+    },
+    async createTask({ commit }, payload) {
+      console.log("payload", payload);
+      const result = await axios.post(
+        `${process.env.VUE_APP_LOCAL_SERVER}api/task`,
+        payload
+      );
+      console.log("result", result);
+      if (result.status == 200) {
+        return;
       }
     },
   },
