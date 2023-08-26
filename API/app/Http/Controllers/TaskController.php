@@ -30,6 +30,8 @@ class TaskController extends Controller
     public function create()
     {
         //
+        
+
     }
 
     /**
@@ -41,6 +43,25 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         //
+        $task = new Task;
+        $task->title = $request->title;
+        $task->description = $request->description;
+        $task->due_date = $request->due_date;
+        $task->status = $request->status;
+        $ok = $task->save();
+
+        if ($ok) {
+            return response()->json([
+                "data" => $task,
+                "success" => true,
+                "message" => 'Successfully created new task',
+            ]);
+        }
+        return response()->json([
+            "data" => false,
+            "success" => false,
+            "message" => 'Creating new task failed',
+        ]);
     }
 
     /**
@@ -63,6 +84,7 @@ class TaskController extends Controller
     public function edit($id)
     {
         //
+        
     }
 
     /**
@@ -75,6 +97,25 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $task =  Task::find($id);
+        $task->title = $request->title;
+        $task->description = $request->description;
+        $task->due_date = $request->due_date;
+        $task->status = $request->status;
+        $ok = $task->save();
+
+        if ($ok) {
+            return response()->json([
+                "data" => $task,
+                "success" => true,
+                "message" => 'Successfully update task',
+            ]);
+        }
+        return response()->json([
+            "data" => false,
+            "success" => false,
+            "message" => 'Updating task failed',
+        ]);
     }
 
     /**
