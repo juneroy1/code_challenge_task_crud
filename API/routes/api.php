@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\API\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +14,10 @@ use App\Http\Controllers\TaskController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::controller(RegisterController::class)->group(function(){
+    Route::post('register', 'register');
+    Route::post('login', 'login');
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
