@@ -25,6 +25,19 @@ const store = new Vuex.Store({
     },
   },
   actions: {
+    async loginNow({ commit }, payload) {
+      const result = await axios
+        .post(`${process.env.VUE_APP_LOCAL_SERVER}api/login`, payload, {
+          headers: {
+            Accept: "application/json",
+          },
+        })
+        if (result.status === 200) {
+            localStorage.setItem("userToken", result.data.data.token)
+            return true
+        }
+        return false
+    },
     getTaskList({ commit }) {
       axios
         .get(`${process.env.VUE_APP_LOCAL_SERVER}api/task`)
