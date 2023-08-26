@@ -27,6 +27,12 @@ const store = new Vuex.Store({
     setUser(state, newData) {
       state.user = newData;
     },
+    setClearTask(state) {
+      state.taskDetails.title = null;
+      state.taskDetails.description = null;
+      state.taskDetails.due_date = null;
+      state.taskDetails.status = false;
+    },
   },
   actions: {
     getUser({ commit }) {
@@ -123,10 +129,13 @@ const store = new Vuex.Store({
           },
         }
       );
+      commit("setClearTask");
       console.log("result", result);
       if (result.status == 200) {
+        
         return;
       }
+      
     },
     async createTask({ commit }, payload) {
       const token = localStorage.getItem("userToken");
@@ -142,10 +151,13 @@ const store = new Vuex.Store({
           },
         }
       );
+      commit("setClearTask");
       console.log("result", result);
       if (result.status == 200) {
+        
         return;
       }
+     
     },
     getTask({ commit }, payload) {
       const token = localStorage.getItem("userToken");
@@ -167,9 +179,9 @@ const store = new Vuex.Store({
         });
     },
   },
-//   getters: {
-//     getData: (state) => state.tasks,
-//   },
+  //   getters: {
+  //     getData: (state) => state.tasks,
+  //   },
 });
 
 export default store;
