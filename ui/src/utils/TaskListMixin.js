@@ -5,7 +5,15 @@ export default () => {
         tasks: []
       };
     },
-    methods: {},
+    methods: {
+        getTasksList(){
+
+        }
+    },
     computed: {},
+    created(){
+        // call api for tasks list
+        this.getTasksList()
+    }
   };
 };
