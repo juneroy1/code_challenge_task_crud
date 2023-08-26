@@ -1,19 +1,22 @@
 <template>
   <div id="app">
     <div>
-      <b-button variant="primary">Primary Button</b-button>
+      <b-container>
+        <tasks-page/>
+      </b-container>
     </div>
   </div>
 </template>
 
 <script>
-// import HelloWorld from "./components/HelloWorld.vue";
+import TasksPage from './components/TasksPage.vue';
+
 
 export default {
   name: "App",
   components: {
-    // HelloWorld,
-  },
+    TasksPage
+},
 };
 </script>
 
