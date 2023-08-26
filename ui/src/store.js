@@ -167,9 +167,9 @@ const store = new Vuex.Store({
         });
     },
   },
-  getters: {
-    getData: (state) => state.tasks,
-  },
+//   getters: {
+//     getData: (state) => state.tasks,
+//   },
 });
 
 export default store;
