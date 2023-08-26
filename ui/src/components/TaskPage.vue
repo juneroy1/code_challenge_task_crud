@@ -4,13 +4,11 @@
   </div>
 </template>
 <script>
+import { TaskMixin } from '@/utils';
+
 export default {
   name: "TaskPage",
-  props: {
-    task: {
-      type: Object,
-      default: null,
-    },
-  },
+  mixins: [TaskMixin()]
+ 
 };
 </script>
