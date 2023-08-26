@@ -21,6 +21,7 @@ export default () => {
           .post("http://localhost:8000/api/task", this.task)
           .then((response) => {
             console.log("response", response);
+            this.$router.push('/');
           })
           .catch((error) => {
             console.error("Error creating data:", error);
