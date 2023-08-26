@@ -14,19 +14,9 @@ export default () => {
       };
     },
     methods: {
-      onUpdate() {
-        axios
-          .put(
-            `http://localhost:8000/api/task/${this.$route.params.id}`,
-            this.task
-          )
-          .then((response) => {
-            console.log("response", response);
-            this.$router.push("/");
-          })
-          .catch((error) => {
-            console.error("Error creating data:", error);
-          });
+      async onUpdate() {
+        await this.$store.dispatch('updateTask',{...this.task, id:this.$route.params.id});
+        this.$router.push("/");
       },
       onCreate() {
         axios
