@@ -1,3 +1,5 @@
+
+
 export default () => {
   return {
     props: {
@@ -6,5 +8,11 @@ export default () => {
         default: null,
       },
     },
+    methods: {
+      redirectEditForm(id){
+        this.$router.push(`/edit/${id}`);
+        console.log('id',id)
+      }
+    }
   };
 };
