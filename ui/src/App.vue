@@ -1,22 +1,16 @@
 <template>
   <div id="app">
     <div>
-      <b-container>
-        <tasks-page/>
-      </b-container>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import TasksPage from './components/TasksPage.vue';
 
 
 export default {
   name: "App",
-  components: {
-    TasksPage
-},
 };
 </script>
 

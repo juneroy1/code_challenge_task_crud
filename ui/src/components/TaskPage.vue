@@ -4,11 +4,10 @@
   </div>
 </template>
 <script>
-import { TaskMixin } from '@/utils';
+import { TaskMixin } from "@/utils";
 
 export default {
   name: "TaskPage",
-  mixins: [TaskMixin()]
- 
+  mixins: [TaskMixin()],
 };
 </script>

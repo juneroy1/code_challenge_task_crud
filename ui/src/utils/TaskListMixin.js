@@ -11,8 +11,8 @@ export default () => {
         axios
           .get("http://localhost:8000/api/task")
           .then((response) => {
-            console.log('response', response)
-            this.tasks = response.data.data
+            console.log("response", response);
+            this.tasks = response.data.data;
           })
           .catch((error) => {
             console.error("Error fetching data:", error);
