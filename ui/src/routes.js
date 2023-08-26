@@ -4,10 +4,12 @@ import VueRouter from "vue-router";
 import TaskFormPage from "./pages/TaskFormPage.vue";
 import TasksListPage from "./pages/TasksListPage.vue";
 import LoginPage from "./pages/auth/LoginPage.vue";
+import RegisterPage from "./pages/auth/RegisterPage.vue";
 Vue.use(VueRouter);
 const routes = [
   { path: "/", component: TasksListPage },
   { path: "/login", component: LoginPage },
+  { path: "/register", component: RegisterPage },
   { path: "/create", component: TaskFormPage,meta: { requiresAuth: true } },
   { path: "/edit/:id", component: TaskFormPage, meta: { requiresAuth: true } },
 ];
