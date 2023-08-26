@@ -6,7 +6,7 @@
           <label class="w-100 text-start" for="title">Title</label>
           <b-form-input
             required
-            v-model="task.title"
+            v-model="getTask.title"
             placeholder="Title here"
           ></b-form-input>
         </b-container>
@@ -14,7 +14,7 @@
           <label class="w-100 text-start" for="description">Description</label>
           <b-form-textarea
             id="description"
-            v-model="task.description"
+            v-model="getTask.description"
             placeholder="Enter something..."
             rows="3"
             max-rows="6"
@@ -26,7 +26,7 @@
           <b-form-datepicker
             required
             id="due_date"
-            v-model="task.due_date"
+            v-model="getTask.due_date"
             class="mb-2"
           ></b-form-datepicker>
         </b-container>
@@ -36,7 +36,7 @@
             id="checkbox-1"
             name="checkbox-1"
             :value="1"
-            v-model="task.status"
+            v-model="getTask.status"
             :unchecked-value="0"
           >
             <label class="mx-2"> Task Done</label>

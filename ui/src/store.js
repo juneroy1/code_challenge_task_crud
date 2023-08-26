@@ -9,10 +9,19 @@ const store = new Vuex.Store({
   state: {
     // Define your initial state here
     tasks: [],
+    taskDetails: {
+      title: null,
+      description: null,
+      due_date: null,
+      status: false,
+    },
   },
   mutations: {
     setTasks(state, newData) {
       state.tasks = newData;
+    },
+    setTask(state, newData) {
+      state.taskDetails = newData;
     },
   },
   actions: {
@@ -60,6 +69,18 @@ const store = new Vuex.Store({
       if (result.status == 200) {
         return;
       }
+    },
+    getTask({ commit }, payload) {
+      axios
+        .get(`${process.env.VUE_APP_LOCAL_SERVER}api/task/${payload.id}/edit`)
+        .then((response) => {
+          console.log("response", response);
+          const task = response.data.data;
+          commit("setTask", task);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
     },
   },
   getters: {

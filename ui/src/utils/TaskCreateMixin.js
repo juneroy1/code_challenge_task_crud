@@ -1,25 +1,23 @@
-import axios from "axios";
+// import axios from "axios";
+import { mapState } from "vuex";
 
 export default () => {
   return {
     data() {
       return {
-        task: {
-          title: null,
-          description: null,
-          due_date: null,
-          status: false,
-        },
         create: true,
       };
     },
     methods: {
       async onUpdate() {
-        await this.$store.dispatch('updateTask',{...this.task, id:this.$route.params.id});
+        await this.$store.dispatch("updateTask", {
+          ...this.getTask,
+          id: this.$route.params.id,
+        });
         this.$router.push("/");
       },
       async onCreate() {
-        await this.$store.dispatch('createTask',this.task);
+        await this.$store.dispatch("createTask", this.getTask);
         this.$router.push("/");
       },
       onSubmit(e) {
@@ -31,16 +29,13 @@ export default () => {
         }
       },
       getTaskDetails(id) {
-        axios
-          .get(`http://localhost:8000/api/task/${id}/edit`)
-          .then((response) => {
-            console.log("response edit", response);
-            // this.$router.push('/');
-            this.task = response.data.data;
-          })
-          .catch((error) => {
-            console.error("Error getting data:", error);
-          });
+        this.$store.dispatch("getTask", { id });
+      },
+    },
+    computed: {
+      ...mapState(["taskDetails"]),
+      getTask() {
+        return this.taskDetails;
       },
     },
     created() {
