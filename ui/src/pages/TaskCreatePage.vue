@@ -4,7 +4,11 @@
       <b-form @submit="onSubmit">
         <b-container class="p-2">
           <label class="w-100 text-start" for="title">Title</label>
-          <b-form-input required v-model="task.title" placeholder="Title here"></b-form-input>
+          <b-form-input
+            required
+            v-model="task.title"
+            placeholder="Title here"
+          ></b-form-input>
         </b-container>
         <b-container class="p-2">
           <label class="w-100 text-start" for="description">Description</label>
@@ -19,7 +23,12 @@
         </b-container>
         <b-container class="p-2">
           <label class="w-100 text-start" for="due_date">Due date</label>
-          <b-form-datepicker required id="due_date" v-model="task.due_date" class="mb-2"></b-form-datepicker>
+          <b-form-datepicker
+            required
+            id="due_date"
+            v-model="task.due_date"
+            class="mb-2"
+          ></b-form-datepicker>
         </b-container>
         <b-container class="p-2">
           <b-form-checkbox

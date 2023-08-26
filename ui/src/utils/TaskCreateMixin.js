@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export default () => {
   return {
     data() {
@@ -15,6 +17,14 @@ export default () => {
         e.preventDefault();
         console.log(e);
         console.log("task", this.task);
+        axios
+          .post("http://localhost:8000/api/task", this.task)
+          .then((response) => {
+            console.log("response", response);
+          })
+          .catch((error) => {
+            console.error("Error creating data:", error);
+          });
       },
     },
   };
