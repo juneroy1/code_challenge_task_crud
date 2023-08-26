@@ -25,22 +25,23 @@ const store = new Vuex.Store({
       state.taskDetails = newData;
     },
     setUser(state, newData) {
-        state.user = newData;
-      },
+      state.user = newData;
+    },
   },
   actions: {
     getUser({ commit }) {
-        const token = localStorage.getItem("userToken")
+        commit("setUser", null);
+      const token = localStorage.getItem("userToken");
       axios
-        .get(`${process.env.VUE_APP_LOCAL_SERVER}api/user`,{
-            headers: {
-                Accept: "application/json",
-                Authorization: `Bearer ${token}`
-              },
+        .get(`${process.env.VUE_APP_LOCAL_SERVER}api/user`, {
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
         })
         .then((response) => {
           console.log("getUser", response);
-        //   const tasks = response.data.data;
+          //   const tasks = response.data.data;
           commit("setUser", response.data);
         })
         .catch((error) => {
