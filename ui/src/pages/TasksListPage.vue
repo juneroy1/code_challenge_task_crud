@@ -1,5 +1,5 @@
 <template>
-  <b-container>
+  <b-container class="w-50" fluid>
     <tasks-page />
   </b-container>
 </template>
