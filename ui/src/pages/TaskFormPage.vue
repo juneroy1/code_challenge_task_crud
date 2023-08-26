@@ -35,9 +35,9 @@
             class="text-start"
             id="checkbox-1"
             name="checkbox-1"
-            :value="true"
+            :value="1"
             v-model="task.status"
-            :unchecked-value="false"
+            :unchecked-value="0"
           >
             <label class="mx-2"> Task Done</label>
           </b-form-checkbox>
@@ -45,7 +45,7 @@
         <b-container class="p-2 d-flex align-items-center justify-content-end">
         <router-link class="text-end justify-content-end mx-2 w-100 d-flex" to="/">Cancel</router-link>
           <b-button type="submit" class="text-end" variant="primary"
-            >Submit</b-button
+            >{{create? 'Submit':'Update'}}</b-button
           >
         </b-container>
       </b-form>

@@ -14,10 +14,21 @@ export default () => {
       };
     },
     methods: {
-      onSubmit(e) {
-        e.preventDefault();
-        console.log(e);
-        console.log("task", this.task);
+      onUpdate() {
+        axios
+          .put(
+            `http://localhost:8000/api/task/${this.$route.params.id}`,
+            this.task
+          )
+          .then((response) => {
+            console.log("response", response);
+            this.$router.push("/");
+          })
+          .catch((error) => {
+            console.error("Error creating data:", error);
+          });
+      },
+      onCreate() {
         axios
           .post("http://localhost:8000/api/task", this.task)
           .then((response) => {
@@ -28,12 +39,21 @@ export default () => {
             console.error("Error creating data:", error);
           });
       },
+      onSubmit(e) {
+        e.preventDefault();
+        if (this.create) {
+          this.onCreate();
+        } else {
+          this.onUpdate();
+        }
+      },
       getTaskDetails(id) {
         axios
           .get(`http://localhost:8000/api/task/${id}/edit`)
           .then((response) => {
             console.log("response edit", response);
             // this.$router.push('/');
+            this.task = response.data.data;
           })
           .catch((error) => {
             console.error("Error getting data:", error);
